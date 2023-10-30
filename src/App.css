@@ -1,0 +1,19 @@
+.list-product {
+  list-style: none;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 200px;
+  padding: 20px;
+  align-items: center;
+}
+
+.product-item {
+  border: 1px solid black;
+  width: 170px;
+}
+
+.content {
+  width: 300px;
+}
