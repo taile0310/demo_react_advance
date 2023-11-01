@@ -1,19 +1,11 @@
-import { Suspense, lazy, useEffect, useState } from "react";
-import { TProductProps } from "./Product";
-import { fetchData } from "../helpers/FetchData";
+import { Suspense, lazy } from "react";
 import { delayForDemo } from "../helpers/DelayDemo";
+import useFetch from "./hooks/useFetch";
 
 const Product = lazy(() => delayForDemo(import("./Product")));
 
 const ListProduct = () => {
-  const [products, setProducts] = useState<TProductProps[]>([]);
-  useEffect(() => {
-    const fetchDataFromUrl = async () => {
-      const data = await fetchData();
-      setProducts(data);
-    };
-    fetchDataFromUrl();
-  }, []);
+  const { products } = useFetch();
   return (
     <>
       <ul className="list-product">
