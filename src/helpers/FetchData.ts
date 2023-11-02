@@ -4,4 +4,5 @@ export const fetchData = async () => {
     const data = await res.json();
     return data;
   }
+  throw new Error("Connection error");
 };
