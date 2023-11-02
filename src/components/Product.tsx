@@ -1,7 +1,6 @@
 export type TProductProps = {
   id: string;
   name: string;
-  price: number;
 };
 
 const Product = ({ id, name }: TProductProps) => {

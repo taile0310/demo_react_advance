@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import { TProductProps } from "../Product";
 import { fetchData } from "../../helpers/FetchData";
 
@@ -33,18 +33,20 @@ const useFetch = () => {
     error: undefined,
   });
 
-  useEffect(() => {
-    const fetchDataFromUrl = async () => {
-      try {
-        dispatch({ type: "request" });
-        const data = await fetchData();
-        dispatch({ type: "success", results: data });
-      } catch (error) {
-        dispatch({ type: "failure", error: "Connection error" });
-      }
-    };
-    fetchDataFromUrl();
+  const fetchDataFromUrl = useCallback(async () => {
+    try {
+      dispatch({ type: "request" });
+      const data = await fetchData();
+      dispatch({ type: "success", results: data });
+    } catch (error) {
+      dispatch({ type: "failure", error: "Connection error" });
+    }
   }, []);
+
+  useEffect(() => {
+    fetchDataFromUrl();
+  }, [fetchDataFromUrl]);
+
   return { data, isLoading, error };
 };
 
