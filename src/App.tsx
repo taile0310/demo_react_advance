@@ -4,6 +4,7 @@ import ListProduct from "./components/ListProduct";
 import { delayForDemo } from "./helpers/DelayDemo";
 import Input from "./components/common/Input";
 import FormInput from "./components/FormInput";
+import CalculatorTotalPrice from "./helpers/CalculatorTotalPrice";
 
 const Content = lazy(() => delayForDemo(import("./components/Content")));
 
@@ -30,11 +31,12 @@ function App() {
           <Content />
         </Profiler>
         <Profiler id="ListProduct" onRender={onRender}>
-          <ListProduct />
+          {/* <ListProduct /> */}
         </Profiler>
         <Input />
       </Suspense>
       <FormInput />
+      <CalculatorTotalPrice />
     </>
   );
 }
